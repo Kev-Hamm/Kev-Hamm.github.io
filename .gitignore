@@ -1,0 +1,4 @@
+assets/*.prev-*.pdf
+resume.md
+resume-print.html
+.DS_Store
