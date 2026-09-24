@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kevin Hammond — Resume</title>
+<style>
+  @page { size: Letter; margin: 0.5in 0.55in; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 9.6pt;
+    line-height: 1.34;
+    color: #1a1d21;
+    margin: 0;
+  }
+  h1 { font-size: 20pt; letter-spacing: 0.4px; margin: 0 0 2pt; font-weight: 700; }
+  .contact { font-size: 8.8pt; color: #4a5058; margin-bottom: 7pt; }
+  .contact a { color: #4a5058; text-decoration: none; }
+  h2 {
+    font-size: 8.6pt; text-transform: uppercase; letter-spacing: 0.5px;
+    color: #0b6e99; margin: 10pt 0 4pt; padding-bottom: 2pt;
+    border-bottom: 0.8pt solid #c9d3de; font-weight: 700;
+  }
+  .summary { margin: 0 0 2pt; }
+  .skills { margin: 0; }
+  .skills b { color: #1a1d21; }
+  .job { margin-bottom: 7pt; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
+  .job-title { font-weight: 700; font-size: 10pt; }
+  .job-title span { font-weight: 400; color: #3c424a; }
+  .job-meta { font-size: 8.6pt; color: #5a616a; white-space: nowrap; }
+  ul { margin: 3pt 0 0; padding-left: 13pt; }
+  li { margin-bottom: 2.2pt; }
+  .proj-name { font-weight: 700; }
+  .edu { display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<h1>Kevin Hammond</h1>
+<div class="contact">
+  Austin, TX &nbsp;·&nbsp; Open to Remote &nbsp;·&nbsp; kevhamm07@gmail.com &nbsp;·&nbsp; 813.418.0667
+  &nbsp;·&nbsp; <a href="https://kev-hamm.github.io">kev-hamm.github.io</a> &nbsp;·&nbsp; github.com/Kev-Hamm
+</div>
+
+<h2>Software Engineer</h2>
+<p class="summary">
+  Full-stack product engineer with 8+ years shipping internal tools and knowledge platforms.
+  Spent five years on the Genesys Knowledge organization building internal knowledge hubs,
+  training infrastructure, and the developer community platform, usually as the sole engineer
+  from problem intake through deploy. Now building LLM-native agent systems from scratch.
+</p>
+
+<h2>Skills</h2>
+<p class="skills">
+  <b>Languages:</b> JavaScript, TypeScript, Python, Java, SQL<br>
+  <b>Frontend:</b> React, Angular, HTML/CSS, Node.js<br>
+  <b>Cloud &amp; Backend:</b> PostgreSQL, AWS Lambda, API Gateway, S3, Serverless Framework, REST API design<br>
+  <b>Practices:</b> LLM application development, Git, CI/CD, Agile, Linux
+</p>
+
+<h2>Experience</h2>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">Genesys — <span>Software Engineer, Knowledge Team</span></div>
+    <div class="job-meta">Aug 2021 – Oct 2026 · Remote</div>
+  </div>
+  <ul>
+    <li>Built and shipped the Orchestrators site and the supporting knowledge resource library
+      used across customer-facing training programs — internal knowledge hub work, owned end to end.</li>
+    <li>Sole engineer on the Genesys Community platform for ~2 years — a surface used daily by
+      thousands of members. Owned the full stack from feature design through production deploy.</li>
+    <li>Worked directly with Knowledge team stakeholders to scope what to build, rather than
+      receiving specs — translated their workflow problems into shipped product.</li>
+    <li>Built workflow-automation features for the Knowledge team, then trained four engineers,
+      including the incoming Community developer, on them — handing off ownership cleanly rather
+      than leaving a single point of failure.</li>
+    <li>Provisioned and maintained cloud VM environments for hands-on course training behind a
+      catalog of thousands of courses in daily use, giving instructors reproducible lab setups
+      instead of manual per-session builds.</li>
+    <li>Shifted to backend service work in the final year: API and data-layer development on AWS
+      serverless (Python and TypeScript Lambdas) supporting Knowledge team products.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div class="job-title">FIS — <span>Junior Software Engineer</span></div>
+    <div class="job-meta">Jun 2018 – Jul 2021 · Tampa, FL</div>
+  </div>
+  <ul>
+    <li>Developed global retail payments features in Angular, Python, Java, and C++ on Linux.</li>
+    <li>Built a PCI data-scrubbing utility that kept cardholder data out of non-production
+      environments.</li>
+    <li>Led an Angular GUI revamp of a core internal tool; contributed to code reviews, test
+      plans, and regression testing.</li>
+    <li>Started as a Global Retail Payments intern (Summer 2017) and converted to full time.</li>
+  </ul>
+</div>
+
+<h2>Projects</h2>
+<p style="margin:0">
+  <span class="proj-name">Round Table — an LLM agent fleet built on OpenClaw</span> (2025 – present).
+  OpenClaw is an open-source agent gateway; Round Table is the layer I designed and wrote on top of
+  it and run against real daily workloads: specialized LLM agents with message routing, a shared
+  task board, scheduled automation, a production deploy lock, and an evidence-gated handoff
+  protocol. 0→1, solo, in production against my own daily work.
+</p>
+
+<h2>Education</h2>
+<div class="edu">
+  <div><b>B.S. Cybersecurity</b> — University of South Florida</div>
+  <div class="job-meta">2020</div>
+</div>
+
+</body>
+</html>
