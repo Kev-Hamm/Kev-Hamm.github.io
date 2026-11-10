@@ -2,337 +2,113 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kevin Hammond — Software Engineer</title>
-<meta name="description" content="Kevin Hammond — Software Engineer in Austin, TX. Full-stack TypeScript and Python on AWS serverless. 8+ years at Genesys and FIS.">
-<meta name="theme-color" content="#f6f3ec">
-<meta property="og:title" content="Kevin Hammond — Software Engineer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kevin Hammond · Software Engineer</title>
+<meta name="description" content="Kevin Hammond, Software Engineer in Austin, TX. Full-stack, AWS serverless. Eight years building web platforms and developer-facing tools.">
+<meta property="og:title" content="Kevin Hammond · Software Engineer">
 <meta property="og:description" content="Full-stack TypeScript and Python on AWS serverless. 8+ years shipping developer-facing platforms.">
 <meta property="og:type" content="profile">
-<link rel="stylesheet" href="styles.css?v=20260921c">
+<meta name="theme-color" content="#f0c6b4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 rx=%224%22 fill=%22%23241d2b%22/%3E%3Ccircle cx=%2211%22 cy=%2211%22 r=%222.4%22 fill=%22%23ffb35c%22/%3E%3C/svg%3E">
+<script>
+  // Route weak or unsupported devices to the existing site before anything heavy loads.
+  // ?room=1 forces the 3D office; ?lofi=1 forces the lo-fi site.
+  (function () {
+    var LOFI = '/classic/';
+    var q = new URLSearchParams(location.search);
+    if (q.has('room')) { window.__roomForced = true; return; }
+    var reason = null;
+    if (q.has('lofi')) reason = 'requested';
+    else if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) reason = 'reduced-motion';
+    else {
+      try {
+        var c = document.createElement('canvas');
+        var gl = c.getContext('webgl2', { failIfMajorPerformanceCaveat: true });
+        if (!gl) reason = 'no-webgl2';
+        else {
+          var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+          var r = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
+          if (/swiftshader|llvmpipe|softpipe|software|basic render/i.test(r)) reason = 'software-gl';
+          var lose = gl.getExtension('WEBGL_lose_context'); if (lose) lose.loseContext();
+        }
+      } catch (e) { reason = 'no-webgl2'; }
+      if (!reason && navigator.deviceMemory && navigator.deviceMemory < 3) reason = 'low-memory';
+      if (!reason && navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) reason = 'few-cores';
+    }
+    if (reason) {
+      window.__lofiReason = reason;
+      document.documentElement.className = 'lofi-route';
+      location.replace(LOFI);
+    }
+  })();
+</script>
+  <script type="module" crossorigin src="./assets/index-BlcheUTZ.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DOOLKFkR.css">
 </head>
 <body>
+<a class="skip" href="#nav">Skip to sections</a>
+<h1 class="sr-only">Kevin Hammond, Software Engineer</h1>
 
-<a class="skip" href="#main">Skip to content</a>
+<div class="lofi-msg" role="status">Opening the lo-fi version… <a href="/classic/">kev-hamm.github.io</a></div>
 
-<!-- ambient scroll world -->
-<div class="world" aria-hidden="true">
-  <video class="world__video" autoplay muted loop playsinline preload="metadata"
-         poster="assets/hero-poster.jpg">
-    <source src="assets/hero.webm" type="video/webm">
-    <source src="assets/hero.mp4" type="video/mp4">
-  </video>
-  <div class="world__layer world__layer--far" data-depth="0.05"></div>
-  <div class="world__layer world__layer--near" data-depth="0.13"></div>
-  <div class="world__scrim"></div>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<div id="loader" class="loader" role="status" aria-live="polite">
+  <div class="loader__inner">
+    <p class="loader__name">Kevin Hammond<span class="dot">.</span></p>
+    <p class="loader__sub" id="loader-msg">Letting the evening light in…</p>
+    <div class="loader__bar" aria-hidden="true"><span id="loader-bar"></span></div>
+    <a class="loader__lofi" href="/classic/">Lo-fi version</a>
+  </div>
 </div>
 
-<header class="topbar">
-  <div class="wrap topbar__inner">
-    <a class="topbar__name" href="#top">Kevin Hammond</a>
-    <nav class="topbar__nav">
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a class="btn" href="assets/Kevin-Hammond-Resume.pdf" download>Resume PDF</a>
-    </nav>
-  </div>
+<header class="top">
+  <button class="brand" id="brand" type="button" aria-label="Kevin Hammond, back to the whole office">
+    <span class="brand__name">Kevin Hammond<span class="dot">.</span></span>
+    <span class="brand__sub">Software Engineer · Austin, TX · Open to remote</span>
+  </button>
+  <nav id="nav" class="nav" aria-label="Sections">
+    <button type="button" data-section="about" aria-controls="panel" aria-expanded="false">About</button>
+    <button type="button" data-section="work" aria-controls="panel" aria-expanded="false">Work</button>
+    <button type="button" data-section="projects" aria-controls="panel" aria-expanded="false">Projects</button>
+    <button type="button" data-section="contact" aria-controls="panel" aria-expanded="false">Contact</button>
+  </nav>
 </header>
 
-<main id="main">
+<div id="hotspots" class="hotspots" aria-hidden="true">
+  <button type="button" tabindex="-1" data-hot="work">Work</button>
+  <button type="button" tabindex="-1" data-hot="projects">Projects</button>
+  <button type="button" tabindex="-1" data-hot="about">About</button>
+  <button type="button" tabindex="-1" data-hot="contact">Contact · knock</button>
+  <button type="button" tabindex="-1" data-hot="duck" class="hot--duck">Quack</button>
+</div>
 
-  <!-- ===== hero ===== -->
-  <section class="hero wrap" id="top">
-    <p class="hero__eyebrow">Austin, TX &nbsp;·&nbsp; Open to remote</p>
-    <h1>Kevin Hammond</h1>
-    <p class="hero__role">Software Engineer &nbsp;<span>/</span>&nbsp; full-stack, AWS serverless</p>
-    <p class="hero__lede">
-      Eight years building web platforms and developer-facing tools. I owned the Genesys Community
-      platform, used daily by thousands of members, end to end as its primary developer — TypeScript
-      and Python across Angular, React, and Lambda — then went deeper into backend services. I take sole ownership of a product
-      surface, then train the engineers who inherit it.
-    </p>
-    <div class="hero__cta">
-      <a class="btn" href="assets/Kevin-Hammond-Resume.pdf" download>Download resume (PDF)</a>
-      <a class="btn btn--ghost" href="https://github.com/Kev-Hamm" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn btn--ghost" href="mailto:kevhamm07@gmail.com">Email me</a>
-    </div>
-    <div class="hero__meta">
-      <span><b>8+ yrs</b> shipping software</span>
-      <span><b>TypeScript · Python</b> primary</span>
-      <span><b>AWS serverless</b> Lambda, API Gateway, S3</span>
-      <span><b>B.S. Cybersecurity</b> USF, 2020</span>
-    </div>
-    <div class="scrollcue">Scroll</div>
-  </section>
+<p id="hint" class="hint">Drag to spin the room</p>
 
-  <!-- ===== experience ===== -->
-  <section class="section wrap" id="experience">
-    <div class="section__head reveal">
-      <span class="section__num">01 — Experience</span>
-      <h2>Where I've shipped</h2>
-      <p class="section__sub">
-        Two employers, eight years, one through-line: own the surface nobody else is covering,
-        then make it survivable without me.
-      </p>
-    </div>
-
-    <div class="timeline">
-
-      <article class="role reveal">
-        <div class="role__head">
-          <h3>Genesys <span>— Software Engineer, Knowledge Team</span></h3>
-          <span class="role__when">Aug 2021 – Oct 2026 · Remote</span>
-        </div>
-        <ul>
-          <li>Built and shipped the <b>Orchestrators site</b> and the supporting knowledge resource
-            library used across customer-facing training programs — internal knowledge hub work,
-            owned end to end.</li>
-          <li>Primary developer for the <b>Genesys Community platform</b> for roughly two years —
-            a surface used daily by thousands of members, where I was the sole engineer owning the
-            full stack from feature design through production deploy.</li>
-          <li>Worked directly with Knowledge team stakeholders to scope what to build, rather than
-            receiving specs — translated their workflow problems into shipped product.</li>
-          <li>Built workflow-automation features for the Knowledge team, then <b>trained four
-            engineers, including the incoming Community developer</b>, on them — handing off
-            ownership cleanly instead of leaving a single point of failure.</li>
-          <li>Provisioned and maintained <b>cloud VM environments for hands-on course training</b>
-            behind a catalog of thousands of courses in daily use, giving instructors reproducible
-            lab setups instead of manual per-session builds.</li>
-          <li>Moved into backend service work in the final year: API and data-layer development on
-            AWS serverless (Python and TypeScript Lambdas) behind Knowledge team products.</li>
-        </ul>
-        <div class="role__stack">
-          <span class="tag">TypeScript</span><span class="tag">Python</span>
-          <span class="tag">React</span><span class="tag">Angular</span>
-          <span class="tag">AWS Lambda</span><span class="tag">Serverless Framework</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">REST APIs</span><span class="tag">Cloud VMs</span>
-        </div>
-      </article>
-
-      <article class="role reveal">
-        <div class="role__head">
-          <h3>FIS <span>— Junior Software Engineer</span></h3>
-          <span class="role__when">Jun 2018 – Jul 2021 · Tampa, FL</span>
-        </div>
-        <ul>
-          <li>Developed global retail payments features in Angular, Python, Java, and C++ on Linux.</li>
-          <li>Built a <b>PCI data-scrubbing utility</b> that kept cardholder data out of
-            non-production environments.</li>
-          <li>Led an Angular GUI revamp of a core internal tool; contributed to code reviews, test
-            plans, and regression testing.</li>
-          <li>Started as a Global Retail Payments intern (Summer 2017) and converted to full time.</li>
-        </ul>
-        <div class="role__stack">
-          <span class="tag">Angular</span><span class="tag">Java</span>
-          <span class="tag">Python</span><span class="tag">C++</span>
-          <span class="tag">Linux</span><span class="tag">PCI / payments</span>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ===== projects ===== -->
-  <section class="section wrap" id="projects">
-    <div class="section__head reveal">
-      <span class="section__num">02 — Projects</span>
-      <h2>What I build on my own time</h2>
-      <p class="section__sub">
-        Mostly agent infrastructure and production tooling. Several repos are private —
-        happy to give a walkthrough or open one up on request.
-      </p>
-    </div>
-
-    <div class="grid">
-
-      <article class="card card--featured reveal">
-        <div class="card__top">
-          <h3>Round Table — an agent fleet built on OpenClaw</h3>
-          <span class="card__badge card__badge--live">Active · private repo</span>
-        </div>
-        <p>
-          OpenClaw is an open-source agent gateway maintained upstream; Round Table is the layer I
-          designed and wrote on top of it, and run against my real daily workloads. My code: a
-          fleet of specialized LLM agents with message routing across Discord and other channels,
-          a shared task board with claim and dispatch rules, scheduled automation, a production
-          deploy lock, and a confidence-scored, evidence-gated handoff protocol with a
-          blind-verifier gate. The deploy lock and the handoff gate both came out of real incidents.
-        </p>
-        <div class="card__stack">
-          <span class="tag">TypeScript</span><span class="tag">Python</span>
-          <span class="tag">Node.js</span><span class="tag">SQLite</span>
-          <span class="tag">systemd</span><span class="tag">LLM orchestration</span>
-        </div>
-        <div class="card__links"><span class="muted">Private repo — walkthrough on request</span></div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__top">
-          <h3>OpenClaw Command Center</h3>
-          <span class="card__badge">Private repo</span>
-        </div>
-        <p>
-          Operations dashboard for the Round Table fleet: live agent status, task board, and an
-          ambient "living world" visualization layered onto the operational views.
-        </p>
-        <div class="card__stack">
-          <span class="tag">TypeScript</span><span class="tag">Angular</span><span class="tag">Three.js</span>
-        </div>
-        <div class="card__links"><span class="muted">Private repo — walkthrough on request</span></div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__top">
-          <h3>SovereignOS</h3>
-          <span class="card__badge">Private repo</span>
-        </div>
-        <p>
-          A console-style Linux build running on an HP EliteBook — Arch Linux and KDE Plasma split
-          into two sessions, a controller-driven home screen (Throne Mode) and a regular desktop
-          (Forge Mode). It installs as A/B images with a rescue fallback, and a small local daemon
-          feeds live device vitals to the home screen.
-        </p>
-        <div class="card__stack">
-          <span class="tag">Arch Linux</span><span class="tag">systemd</span><span class="tag">TypeScript</span><span class="tag">Bash</span>
-        </div>
-        <div class="card__links"><span class="muted">Private repo — walkthrough on request</span></div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__top">
-          <h3>Canon Pipeline Plugin</h3>
-          <span class="card__badge">Private repo</span>
-        </div>
-        <p>
-          Python plugin implementing a gated content pipeline: workflow gates, contract
-          validation, smoke tests, and metrics — so generated output can't reach a published path
-          without passing checks.
-        </p>
-        <div class="card__stack">
-          <span class="tag">Python</span><span class="tag">Contract testing</span><span class="tag">CI gates</span>
-        </div>
-        <div class="card__links"><span class="muted">Private repo — walkthrough on request</span></div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__top">
-          <h3>UNKEPT</h3>
-          <span class="card__badge">In development</span>
-        </div>
-        <p>
-          An anime action game I'm building in Unity — a toon-shaded city on a modular street
-          kit, a walkable hub, and a run, dash and dodge move set with ink effects. Characters and
-          props come through an AI-assisted art pipeline: generated concepts, 3D meshes, and local
-          rigging.
-        </p>
-        <div class="card__stack"><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">Blender</span></div>
-        <div class="card__links"><span class="muted">Private repo — walkthrough on request</span></div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__top">
-          <h3>Elevin Solutions</h3>
-          <span class="card__badge card__badge--live">Live site</span>
-        </div>
-        <p>
-          Client website for a small business — Angular marketing site on a custom domain with an
-          automated GitHub Pages deploy pipeline.
-        </p>
-        <div class="card__stack"><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">CI deploy</span></div>
-        <div class="card__links">
-          <a href="https://elevinsolutions.us" target="_blank" rel="noopener">Visit elevinsolutions.us →</a>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__top">
-          <h3>Blue Oasis</h3>
-          <span class="card__badge card__badge--live">Live site</span>
-        </div>
-        <p>
-          Client website for a care-services business — Angular 18 marketing site with a working
-          inquiry form and an automated GitHub Pages deploy pipeline.
-        </p>
-        <div class="card__stack"><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">Forms</span></div>
-        <div class="card__links">
-          <a href="https://blueoasis.us" target="_blank" rel="noopener">Visit blueoasis.us →</a>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card__top">
-          <h3>Beauford &amp; Sons</h3>
-          <span class="card__badge card__badge--live">Live site</span>
-        </div>
-        <p>
-          Client website for a home-services contractor (carpentry, drywall, HVAC) — dependency-free
-          static site with a config-driven content layer, lead-capture form, and Cloudflare Pages
-          deploy on a custom domain.
-        </p>
-        <div class="card__stack"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Cloudflare Pages</span></div>
-        <div class="card__links">
-          <a href="https://beaufordandsons.com" target="_blank" rel="noopener">Visit beaufordandsons.com →</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ===== skills ===== -->
-  <section class="section wrap" id="skills">
-    <div class="section__head reveal">
-      <span class="section__num">03 — Toolkit</span>
-      <h2>Skills</h2>
-    </div>
-    <div class="skills reveal">
-      <div>
-        <h3>Languages</h3>
-        <ul><li>TypeScript</li><li>JavaScript</li><li>Python</li><li>Java</li><li>SQL</li><li>C#</li></ul>
-      </div>
-      <div>
-        <h3>Frontend</h3>
-        <ul><li>React</li><li>Angular</li><li>HTML / CSS</li><li>Node.js</li></ul>
-      </div>
-      <div>
-        <h3>Cloud &amp; Backend</h3>
-        <ul><li>AWS Lambda</li><li>API Gateway</li><li>S3</li><li>Serverless Framework</li><li>REST API design</li><li>Cloud VM provisioning</li></ul>
-      </div>
-      <div>
-        <h3>Practices</h3>
-        <ul><li>Git &amp; CI/CD</li><li>Code &amp; test review</li><li>Regression testing</li><li>Agile</li><li>Linux</li><li>Mentoring &amp; handoff</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== contact ===== -->
-  <section class="contact wrap" id="contact">
-    <div class="reveal">
-      <h2>Let's talk</h2>
-      <p>
-        Open to software engineering roles, remote-first. Based in Austin, TX and
-        available now.
-      </p>
-      <div class="contact__links">
-        <a class="btn" href="mailto:kevhamm07@gmail.com">kevhamm07@gmail.com</a>
-        <a class="btn btn--ghost" href="tel:+18134180667">813.418.0667</a>
-        <a class="btn btn--ghost" href="https://github.com/Kev-Hamm" target="_blank" rel="noopener">github.com/Kev-Hamm</a>
-        <a class="btn btn--ghost" href="assets/Kevin-Hammond-Resume.pdf" download>Resume PDF</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer-outer">
-  <div class="wrap footer">
-    <span>© 2026 Kevin Hammond</span>
-    <span>Austin, TX · Open to remote</span>
+<section id="panel" class="panel" role="region" aria-labelledby="panel-title" hidden>
+  <div class="panel__bar">
+    <button type="button" class="back" id="back">← Back to the office <kbd>Esc</kbd></button>
+    <a class="chip chip--lofi lofi-inpanel" href="/classic/">Lo-fi version</a>
   </div>
-</footer>
+  <div class="panel__body" id="panel-body"></div>
+</section>
 
-<script src="app.js"></script>
+<footer class="bottom">
+  <button type="button" id="credits-btn" class="chip" aria-controls="panel">Credits</button>
+  <button type="button" id="sound-btn" class="chip" aria-pressed="false">Sound off</button>
+  <a class="chip chip--lofi" href="/classic/" id="lofi-link">Lo-fi version</a>
+</footer>
+<button type="button" id="reset-view" class="chip reset-view" aria-label="Reset view: back to the front of the room">Reset view</button>
+
+<div id="toast" class="toast" role="alertdialog" aria-labelledby="toast-text" hidden>
+  <p id="toast-text">This device seems to be struggling with the 3D office.</p>
+  <div class="toast__actions">
+    <button type="button" id="toast-stay" class="chip">Stay</button>
+    <a class="chip chip--accent" href="/classic/">Go lo-fi</a>
+  </div>
+</div>
+
+<noscript><p class="noscript">This page needs JavaScript. The full résumé is at <a href="/classic/">kev-hamm.github.io</a>.</p></noscript>
 </body>
 </html>
